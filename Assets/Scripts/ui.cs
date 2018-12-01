@@ -12,7 +12,7 @@ public class ui : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        municionUI.text = "" + PlayerController.municion;
+        municionUI.text = "" + PlayerController.ammo;
 
         regalosUI.text = "" + GameManager.regalos;
     }

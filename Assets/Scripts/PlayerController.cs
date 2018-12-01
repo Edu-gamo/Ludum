@@ -5,12 +5,13 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour {
 
     private float axisX, axisY;
+    private bool interact;
     public float speed = 10;
     private Vector2 movement;
 
     private Rigidbody2D rigid;
 
-    public static int municion;
+    public static int ammo;
 
     // Use this for initialization
     void Start () {
@@ -36,5 +37,25 @@ public class PlayerController : MonoBehaviour {
         axisX = Input.GetAxisRaw("Horizontal");
         axisY = Input.GetAxisRaw("Vertical");
 
+        if (Input.GetKeyDown(KeyCode.E)) {
+            interact = true;
+        } else if(Input.GetKeyUp(KeyCode.E)) interact = false;
+
     }
+
+    private void OnTriggerEnter2D(Collider2D collision) {
+        
+        if(collision.tag == "Elf") {
+
+            if (interact) {
+                
+                ammo++;
+                Destroy(collision.gameObject);
+
+            }
+
+        }
+        
+    }
+
 }
