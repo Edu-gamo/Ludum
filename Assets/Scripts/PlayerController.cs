@@ -64,6 +64,14 @@ public class PlayerController : MonoBehaviour {
 
             }
 
+        } else if (collision.tag == "ElfHouse") {
+
+            if (interact && ammo > 0) {
+
+                if(collision.GetComponent<ElfHouseManager>().AddElf()) ammo--;
+
+            }
+
         }
         
     }
