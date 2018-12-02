@@ -5,19 +5,23 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour {
 
     private float axisX, axisY;
-    private bool interact;
+    private bool interact, shoot;
+    private Vector2 target = Vector2.zero;
+
     public float speed = 10;
-    private Vector2 movement;
+    private Vector2 movement = Vector2.zero;
 
     private Rigidbody2D rigid;
 
     public static int ammo;
 
+    public GameObject bulletPrefab;
+
     // Use this for initialization
     void Start () {
 
         rigid = GetComponent<Rigidbody2D>();
-		
+
 	}
 	
 	// Update is called once per frame
@@ -30,6 +34,11 @@ public class PlayerController : MonoBehaviour {
         
         rigid.MovePosition(rigid.position + movement);
 
+        if (shoot) {
+            GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+            bullet.GetComponent<BulletMovement>().movement = new Vector3(target.x - transform.position.x, target.y - transform.position.y, 0).normalized;
+        }
+
     }
 
     void GetInputs() {
@@ -37,13 +46,14 @@ public class PlayerController : MonoBehaviour {
         axisX = Input.GetAxisRaw("Horizontal");
         axisY = Input.GetAxisRaw("Vertical");
 
-        if (Input.GetKeyDown(KeyCode.E)) {
-            interact = true;
-        } else if(Input.GetKeyUp(KeyCode.E)) interact = false;
+        interact = Input.GetKeyDown(KeyCode.E);
+
+        shoot = Input.GetMouseButtonDown(0);
+        target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
     }
 
-    private void OnTriggerEnter2D(Collider2D collision) {
+    private void OnTriggerStay2D(Collider2D collision) {
         
         if(collision.tag == "Elf") {
 
