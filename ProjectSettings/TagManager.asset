@@ -9,6 +9,7 @@ TagManager:
   - Elf
   - Wall
   - Bullet
+  - regalo
   layers:
   - Default
   - TransparentFX

@@ -18,6 +18,8 @@ public class MovementEnemy : MonoBehaviour {
 
     public ParticleSystem explosion;
 
+    public GameObject objectStealed;
+    public GameObject objectToInst;
     private void Awake() {
         shortestDist = Mathf.Infinity;
         for (int i = 0; i < exits.Length; i++) {
@@ -33,6 +35,7 @@ public class MovementEnemy : MonoBehaviour {
     void Start () {
         rb = GetComponent<Rigidbody2D>();
         Target = GameObject.Find("Tree").GetComponent<Transform>();
+        objectStealed.gameObject.SetActive(false);
     }
 	
 	// Update is called once per frame
@@ -40,6 +43,10 @@ public class MovementEnemy : MonoBehaviour {
 
         if (hp <= 0) {
             Instantiate(explosion, transform.position, Quaternion.identity);
+            if (stealed)
+            {
+                Instantiate(objectToInst, transform.position, Quaternion.identity);
+            }
             Destroy(gameObject);
         }
 
@@ -52,6 +59,7 @@ public class MovementEnemy : MonoBehaviour {
                 transform.position = Vector2.MoveTowards(transform.position, Target.position, vel * Time.deltaTime);
             }
         } else {
+            objectStealed.gameObject.SetActive(true);
             transform.position = Vector2.MoveTowards(transform.position, exits[exit].transform.position, 5 * Time.deltaTime);
         }
 
