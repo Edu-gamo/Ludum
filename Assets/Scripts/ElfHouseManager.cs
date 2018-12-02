@@ -30,8 +30,6 @@ public class ElfHouseManager : MonoBehaviour {
 
             }
 
-            Debug.Log(workCounter + " : " + elfsWorking + " : " + maxWorkTime);
-
         }
 		
 	}

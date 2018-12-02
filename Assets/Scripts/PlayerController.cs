@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour {
 
     private float axisX, axisY;
     private bool interact, shoot;
-    private Vector2 target = Vector2.zero;
+    private Vector2 mousePos = Vector2.zero;
 
     public float speed = 10;
     private Vector2 movement = Vector2.zero;
@@ -17,17 +17,22 @@ public class PlayerController : MonoBehaviour {
 
     public GameObject bulletPrefab;
 
+    private SpriteRenderer sprRender;
+
     // Use this for initialization
     void Start () {
 
         rigid = GetComponent<Rigidbody2D>();
+        sprRender = GetComponent<SpriteRenderer>();
 
-	}
+    }
 	
 	// Update is called once per frame
 	void Update () {
 
         GetInputs();
+
+        PlayerRotation();
 
         movement = new Vector2(axisX, axisY);
         movement *= speed * Time.deltaTime;
@@ -36,12 +41,12 @@ public class PlayerController : MonoBehaviour {
 
         if (shoot) {
             GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
-            bullet.GetComponent<BulletMovement>().movement = new Vector3(target.x - transform.position.x, target.y - transform.position.y, 0).normalized;
+            bullet.GetComponent<BulletMovement>().movement = new Vector3(mousePos.x - transform.position.x, mousePos.y - transform.position.y, 0).normalized;
         }
 
     }
 
-    void GetInputs() {
+    private void GetInputs() {
         
         axisX = Input.GetAxisRaw("Horizontal");
         axisY = Input.GetAxisRaw("Vertical");
@@ -49,7 +54,23 @@ public class PlayerController : MonoBehaviour {
         interact = Input.GetKeyDown(KeyCode.E);
 
         shoot = Input.GetMouseButtonDown(0);
-        target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+    }
+
+    private void PlayerRotation() {
+
+        Vector2 direction = mousePos - new Vector2(transform.position.x, transform.position.y);
+
+        if (direction.x < 0 && !sprRender.flipX) {
+
+            sprRender.flipX = true;
+
+        } else if(direction.x > 0 && sprRender.flipX) {
+
+            sprRender.flipX = false;
+
+        }
 
     }
 
