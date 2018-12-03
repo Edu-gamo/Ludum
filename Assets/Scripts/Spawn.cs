@@ -8,7 +8,7 @@ public class Spawn : MonoBehaviour {
     public GameObject[] enemy; //enemigo spawneado!!
     public GameObject[] elfs;
     public GameObject elf;
-    int round = 0;
+    int round;
     public int randSpawnPlatform;  //Spawn en una de las plataformas
     public int randSpawnPosition; //Posiciones random de spawn
     float counter; //contador
@@ -23,9 +23,14 @@ public class Spawn : MonoBehaviour {
     public float timeDurationRound;
     public GameObject[] enemyS;
 
-    public float timeRound = 0;
+    public float timeRound;
     public bool endRound = false;
     // Update is called once per frame
+    private void Start()
+    {
+        timeRound = 0;
+        round = 0;
+    }
     void Update()
     {
         //Debug.Log(round);
@@ -34,7 +39,7 @@ public class Spawn : MonoBehaviour {
 
         if(enemyS.Length == 0)
         {
-            if (timeSpawn == 1500) //DURACION DESCANSO
+            if (timeSpawn == 1000) //DURACION DESCANSO
             {
                 if (round < 10)
                 {
@@ -97,7 +102,7 @@ public class Spawn : MonoBehaviour {
             //velocidad enemigos de esa oleada
             MovementEnemy.vel = 1f;
             //Tiempo de spawn de cada enemigo
-            if (counter > 400)
+            if (counter > 150)
             {
                 //Si el random es de Derecha a izquierda
                 if (randSpawnPlatform == 0 || randSpawnPlatform == 1)
@@ -128,7 +133,7 @@ public class Spawn : MonoBehaviour {
         {
             MovementEnemy.vel = 2f;
             //Tiempo de spawn de cada enemigo
-            if (counter > 375)
+            if (counter > 145)
             {
                 //Si el random es de Derecha a izquierda
                 if (randSpawnPlatform == 0 || randSpawnPlatform == 1)
@@ -158,7 +163,7 @@ public class Spawn : MonoBehaviour {
                 {
                     MovementEnemy.vel = 2f;
                     //Tiempo de spawn de cada enemigo
-                    if (counter > 350)
+                    if (counter > 135)
                     {
                         //Si el random es de Derecha a izquierda
                         if (randSpawnPlatform == 0 || randSpawnPlatform == 1)
@@ -188,7 +193,7 @@ public class Spawn : MonoBehaviour {
                 {
                     MovementEnemy.vel = 2f;
                     //Tiempo de spawn de cada enemigo
-                    if (counter > 300)
+                    if (counter > 120)
                     {
                         //Si el random es de Derecha a izquierda
                         if (randSpawnPlatform == 0 || randSpawnPlatform == 1)
@@ -218,7 +223,7 @@ public class Spawn : MonoBehaviour {
                 {
                     MovementEnemy.vel = 2f;
                     //Tiempo de spawn de cada enemigo
-                    if (counter > 275)
+                    if (counter > 110)
                     {
                         //Si el random es de Derecha a izquierda
                         if (randSpawnPlatform == 0 || randSpawnPlatform == 1)
@@ -248,7 +253,7 @@ public class Spawn : MonoBehaviour {
                 {
                     MovementEnemy.vel = 2f;
                     //Tiempo de spawn de cada enemigo
-                    if (counter > 225)
+                    if (counter > 105)
                     {
                         //Si el random es de Derecha a izquierda
                         if (randSpawnPlatform == 0 || randSpawnPlatform == 1)
@@ -278,7 +283,7 @@ public class Spawn : MonoBehaviour {
                 {
                     MovementEnemy.vel = 2f;
                     //Tiempo de spawn de cada enemigo
-                    if (counter > 200)
+                    if (counter > 95)
                     {
                         //Si el random es de Derecha a izquierda
                         if (randSpawnPlatform == 0 || randSpawnPlatform == 1)
@@ -308,7 +313,7 @@ public class Spawn : MonoBehaviour {
                 {
                     MovementEnemy.vel = 2f;
                     //Tiempo de spawn de cada enemigo
-                    if (counter > 150)
+                    if (counter > 90)
                     {
                         //Si el random es de Derecha a izquierda
                         if (randSpawnPlatform == 0 || randSpawnPlatform == 1)
@@ -334,11 +339,11 @@ public class Spawn : MonoBehaviour {
                 }
                 break;
             case 8:
-                if (timeDurationRound < 2000)
+                if (timeDurationRound < 2250)
                 {
                     MovementEnemy.vel = 2f;
                     //Tiempo de spawn de cada enemigo
-                    if (counter > 125)
+                    if (counter > 90)
                     {
                         //Si el random es de Derecha a izquierda
                         if (randSpawnPlatform == 0 || randSpawnPlatform == 1)
@@ -364,11 +369,11 @@ public class Spawn : MonoBehaviour {
                 }
                 break;
             case 9:
-                if (timeDurationRound < 2000)
+                if (timeDurationRound < 2500)
                 {
                     MovementEnemy.vel = 2f;
                     //Tiempo de spawn de cada enemigo
-                    if (counter > 75)
+                    if (counter > 85)
                     {
                         //Si el random es de Derecha a izquierda
                         if (randSpawnPlatform == 0 || randSpawnPlatform == 1)
@@ -394,11 +399,11 @@ public class Spawn : MonoBehaviour {
                 }
                 break;
             case 10:
-                if (timeDurationRound < 2000)
+                if (timeDurationRound < 3000)
                 {
                     MovementEnemy.vel = 2f;
                     //Tiempo de spawn de cada enemigo
-                    if (counter > 50)
+                    if (counter > 85)
                     {
                         //Si el random es de Derecha a izquierda
                         if (randSpawnPlatform == 0 || randSpawnPlatform == 1)
