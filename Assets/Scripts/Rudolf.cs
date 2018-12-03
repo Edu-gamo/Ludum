@@ -19,17 +19,28 @@ public class Rudolf : MonoBehaviour {
         {
             if (Vector2.Distance(transform.position, Arbol.transform.position) >= 0)
             {
-                transform.position = Vector2.MoveTowards(transform.position, Arbol.transform.position, 5 * Time.deltaTime);
+                transform.position = Vector2.MoveTowards(transform.position, Arbol.transform.position, 15 * Time.deltaTime);
             }
         }
-        else
+        if (Vector2.Distance(transform.position, Arbol.transform.position) == 0)
+        {
+            sendRegalo = true;
+            GameManager.regalos -= 10;
+        }
+        if (sendRegalo)
         {
             if (Vector2.Distance(transform.position, Exit.transform.position) >= 0)
             {
-                transform.position = Vector2.MoveTowards(transform.position, Exit.transform.position, 5 * Time.deltaTime);
+                transform.position = Vector2.MoveTowards(transform.position, Exit.transform.position, 15 * Time.deltaTime);
+            }
+            if (Vector2.Distance(transform.position, Exit.transform.position) == 0)
+            {
+                Destroy(gameObject);
             }
         }
-    }
+        
+        }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Tree")

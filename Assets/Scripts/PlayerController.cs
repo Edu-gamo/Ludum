@@ -115,9 +115,7 @@ public class PlayerController : MonoBehaviour {
         } else if(direction.x > 0 && sprRender.flipX) {
 
             sprRender.flipX = false;
-
         }
-
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
