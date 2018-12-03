@@ -40,6 +40,10 @@ public class Spawn : MonoBehaviour {
                 {
                     round++;
                 }
+                else if(round == 10)
+                {
+                    round = 10;
+                }
                 timeSpawn = 0;
                 timeDurationRound = 0;
             }
