@@ -45,7 +45,7 @@ public class MovementEnemy : MonoBehaviour {
 
     private SpriteRenderer sprRender;
     public Vector2 presentOffset = new Vector2(1.15f, 0.2f);
-    private AudioSource explodeSound;
+    public static AudioSource explodeSound;
     private void Awake() {
         explodeSound = gameObject.GetComponent<AudioSource>();
         explodeSound.Stop();
@@ -81,12 +81,13 @@ public class MovementEnemy : MonoBehaviour {
 	void Update () {
 
         if (hp <= 0) {
-            explodeSound.Play();
+       
             Instantiate(explosion, transform.position, Quaternion.identity);
             if (stealed)
             {
                 Instantiate(objectToInst, transform.position, Quaternion.identity);
             }
+            explodeSound.Play();
             Destroy(gameObject);
         }
 
