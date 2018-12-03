@@ -137,7 +137,7 @@ public class MovementEnemy : MonoBehaviour {
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
-        if(collision.tag == "Tree") {
+        if(collision.tag == "Tree" && !stealed) {
             GameManager.regalos--;
             stealed = true;
         }
