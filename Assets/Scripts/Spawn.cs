@@ -72,9 +72,9 @@ public class Spawn : MonoBehaviour {
     }
     void spawnElfs()
     {
-        if (elfs.Length < 10) //numeri elfos pantalla
+        if (elfs.Length < 20) //numero elfos pantalla
         {
-            if (counterElf > 500)
+            if (counterElf > 100)
             {
                 randElfX = Random.Range(-9, 9);
                 randElfY = Random.Range(-5, 8);
