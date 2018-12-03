@@ -92,12 +92,12 @@ public class Spawn : MonoBehaviour {
         //OLEADA 1 -  //TIEMPO DURACION OLEADA 1
         switch (round) {
             case 0:
-            if (timeDurationRound < 3000)
+            if (timeDurationRound < 2000)
             {
             //velocidad enemigos de esa oleada
             MovementEnemy.vel = 1f;
             //Tiempo de spawn de cada enemigo
-            if (counter > 450)
+            if (counter > 400)
             {
                 //Si el random es de Derecha a izquierda
                 if (randSpawnPlatform == 0 || randSpawnPlatform == 1)
@@ -124,11 +124,11 @@ public class Spawn : MonoBehaviour {
                 break;
             //TIEMPO DURACION OLEADA 2 
             case 1:
-                if (timeDurationRound < 3000)
+                if (timeDurationRound < 2000)
         {
             MovementEnemy.vel = 2f;
             //Tiempo de spawn de cada enemigo
-            if (counter > 425)
+            if (counter > 375)
             {
                 //Si el random es de Derecha a izquierda
                 if (randSpawnPlatform == 0 || randSpawnPlatform == 1)
@@ -154,37 +154,7 @@ public class Spawn : MonoBehaviour {
                 }
                 break;
             case 2:
-                if (timeDurationRound < 3000)
-                {
-                    MovementEnemy.vel = 2f;
-                    //Tiempo de spawn de cada enemigo
-                    if (counter > 400)
-                    {
-                        //Si el random es de Derecha a izquierda
-                        if (randSpawnPlatform == 0 || randSpawnPlatform == 1)
-                        {
-                            //Spawn random con Y random
-                            Instantiate(enemy[0], new Vector2(spawners[randSpawnPlatform].transform.position.x,
-                            spawners[randSpawnPlatform].transform.position.y + randSpawnPosition), Quaternion.identity);
-                        }
-                        //Si el random es de Arriba a abajo
-                        else if (randSpawnPlatform == 2 || randSpawnPlatform == 3)
-                        {
-                            //Spawn random con X random
-                            Instantiate(enemy[0], new Vector2(spawners[randSpawnPlatform].transform.position.x + randSpawnPosition,
-                            spawners[randSpawnPlatform].transform.position.y), Quaternion.identity);
-                        }
-                        counter = 0;
-                    }
-                    else
-                    {
-                        counter++;
-
-                    }
-                }
-                break;
-            case 3:
-                if (timeDurationRound < 3000)
+                if (timeDurationRound < 2000)
                 {
                     MovementEnemy.vel = 2f;
                     //Tiempo de spawn de cada enemigo
@@ -213,12 +183,12 @@ public class Spawn : MonoBehaviour {
                     }
                 }
                 break;
-            case 4:
-                if (timeDurationRound < 3000)
+            case 3:
+                if (timeDurationRound < 2000)
                 {
                     MovementEnemy.vel = 2f;
                     //Tiempo de spawn de cada enemigo
-                    if (counter > 325)
+                    if (counter > 300)
                     {
                         //Si el random es de Derecha a izquierda
                         if (randSpawnPlatform == 0 || randSpawnPlatform == 1)
@@ -243,8 +213,8 @@ public class Spawn : MonoBehaviour {
                     }
                 }
                 break;
-            case 5:
-                if (timeDurationRound < 3000)
+            case 4:
+                if (timeDurationRound < 2000)
                 {
                     MovementEnemy.vel = 2f;
                     //Tiempo de spawn de cada enemigo
@@ -273,38 +243,8 @@ public class Spawn : MonoBehaviour {
                     }
                 }
                 break;
-            case 6:
-                if (timeDurationRound < 3000)
-                {
-                    MovementEnemy.vel = 2f;
-                    //Tiempo de spawn de cada enemigo
-                    if (counter > 250)
-                    {
-                        //Si el random es de Derecha a izquierda
-                        if (randSpawnPlatform == 0 || randSpawnPlatform == 1)
-                        {
-                            //Spawn random con Y random
-                            Instantiate(enemy[0], new Vector2(spawners[randSpawnPlatform].transform.position.x,
-                            spawners[randSpawnPlatform].transform.position.y + randSpawnPosition), Quaternion.identity);
-                        }
-                        //Si el random es de Arriba a abajo
-                        else if (randSpawnPlatform == 2 || randSpawnPlatform == 3)
-                        {
-                            //Spawn random con X random
-                            Instantiate(enemy[0], new Vector2(spawners[randSpawnPlatform].transform.position.x + randSpawnPosition,
-                            spawners[randSpawnPlatform].transform.position.y), Quaternion.identity);
-                        }
-                        counter = 0;
-                    }
-                    else
-                    {
-                        counter++;
-
-                    }
-                }
-                break;
-            case 7:
-                if (timeDurationRound < 3000)
+            case 5:
+                if (timeDurationRound < 2000)
                 {
                     MovementEnemy.vel = 2f;
                     //Tiempo de spawn de cada enemigo
@@ -333,12 +273,12 @@ public class Spawn : MonoBehaviour {
                     }
                 }
                 break;
-            case 8:
-                if (timeDurationRound < 3000)
+            case 6:
+                if (timeDurationRound < 2000)
                 {
                     MovementEnemy.vel = 2f;
                     //Tiempo de spawn de cada enemigo
-                    if (counter > 175)
+                    if (counter > 200)
                     {
                         //Si el random es de Derecha a izquierda
                         if (randSpawnPlatform == 0 || randSpawnPlatform == 1)
@@ -363,8 +303,8 @@ public class Spawn : MonoBehaviour {
                     }
                 }
                 break;
-            case 9:
-                if (timeDurationRound < 3000)
+            case 7:
+                if (timeDurationRound < 2000)
                 {
                     MovementEnemy.vel = 2f;
                     //Tiempo de spawn de cada enemigo
@@ -393,12 +333,72 @@ public class Spawn : MonoBehaviour {
                     }
                 }
                 break;
-            case 10:
-                if (timeDurationRound < 3000)
+            case 8:
+                if (timeDurationRound < 2000)
                 {
                     MovementEnemy.vel = 2f;
                     //Tiempo de spawn de cada enemigo
-                    if (counter > 100)
+                    if (counter > 125)
+                    {
+                        //Si el random es de Derecha a izquierda
+                        if (randSpawnPlatform == 0 || randSpawnPlatform == 1)
+                        {
+                            //Spawn random con Y random
+                            Instantiate(enemy[0], new Vector2(spawners[randSpawnPlatform].transform.position.x,
+                            spawners[randSpawnPlatform].transform.position.y + randSpawnPosition), Quaternion.identity);
+                        }
+                        //Si el random es de Arriba a abajo
+                        else if (randSpawnPlatform == 2 || randSpawnPlatform == 3)
+                        {
+                            //Spawn random con X random
+                            Instantiate(enemy[0], new Vector2(spawners[randSpawnPlatform].transform.position.x + randSpawnPosition,
+                            spawners[randSpawnPlatform].transform.position.y), Quaternion.identity);
+                        }
+                        counter = 0;
+                    }
+                    else
+                    {
+                        counter++;
+
+                    }
+                }
+                break;
+            case 9:
+                if (timeDurationRound < 2000)
+                {
+                    MovementEnemy.vel = 2f;
+                    //Tiempo de spawn de cada enemigo
+                    if (counter > 75)
+                    {
+                        //Si el random es de Derecha a izquierda
+                        if (randSpawnPlatform == 0 || randSpawnPlatform == 1)
+                        {
+                            //Spawn random con Y random
+                            Instantiate(enemy[0], new Vector2(spawners[randSpawnPlatform].transform.position.x,
+                            spawners[randSpawnPlatform].transform.position.y + randSpawnPosition), Quaternion.identity);
+                        }
+                        //Si el random es de Arriba a abajo
+                        else if (randSpawnPlatform == 2 || randSpawnPlatform == 3)
+                        {
+                            //Spawn random con X random
+                            Instantiate(enemy[0], new Vector2(spawners[randSpawnPlatform].transform.position.x + randSpawnPosition,
+                            spawners[randSpawnPlatform].transform.position.y), Quaternion.identity);
+                        }
+                        counter = 0;
+                    }
+                    else
+                    {
+                        counter++;
+
+                    }
+                }
+                break;
+            case 10:
+                if (timeDurationRound < 2000)
+                {
+                    MovementEnemy.vel = 2f;
+                    //Tiempo de spawn de cada enemigo
+                    if (counter > 50)
                     {
                         //Si el random es de Derecha a izquierda
                         if (randSpawnPlatform == 0 || randSpawnPlatform == 1)
