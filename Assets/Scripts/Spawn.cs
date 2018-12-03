@@ -26,15 +26,31 @@ public class Spawn : MonoBehaviour {
     public float timeRound;
     public bool endRound = false;
     public GameObject textRound;
+
+    public GameObject rudolf;
+    public GameObject spawnRudolf;
     // Update is called once per frame
     private void Start()
     {
         textRound.gameObject.SetActive(false);
         timeRound = 0;
         round = 0;
+        Rudolf.presentToSteal = 10;
     }
     void Update()
     {
+        if (round < 3)
+        {
+            Rudolf.presentToSteal = 10;
+        }
+        if (round < 6 && round > 3)
+        {
+            Rudolf.presentToSteal = 20;
+        }
+        if (round < 9 &&round > 6)
+        {
+            Rudolf.presentToSteal = 30;
+        }
         //Debug.Log(round);
         //contador del juego 
         enemyS = GameObject.FindGameObjectsWithTag("Enemy");
@@ -47,15 +63,30 @@ public class Spawn : MonoBehaviour {
                 {
                     round++;
                 }
+               
                 else if(round == 10)
                 {
                     round = 10;
+                }
+               
+                if (round == 3)
+                {
+                    Instantiate(rudolf, spawnRudolf.transform.position, Quaternion.identity);
+                }
+                if (round == 6)
+                {
+                    Instantiate(rudolf, spawnRudolf.transform.position, Quaternion.identity);
+                }
+                if (round == 9)
+                {
+                    Instantiate(rudolf, spawnRudolf.transform.position, Quaternion.identity);
                 }
                 timeSpawn = 0;
                 timeDurationRound = 0;
             }
             else
             {
+         
                 timeSpawn++;
             }
         }
@@ -101,11 +132,11 @@ public class Spawn : MonoBehaviour {
             case 0:
             if (timeDurationRound < 2000)
             {
-                    if(timeDurationRound < 500)
+                    if(timeDurationRound < 200)
                     {
                         textRound.gameObject.SetActive(true);
                     }
-                   if(timeDurationRound > 500)
+                   if(timeDurationRound > 200)
                     {
                         textRound.gameObject.SetActive(false);
                     }

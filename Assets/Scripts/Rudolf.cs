@@ -8,8 +8,10 @@ public class Rudolf : MonoBehaviour {
     public bool sendRegalo;
     public GameObject Arbol;
     public GameObject Exit;
+    public static int presentToSteal;
 	void Start () {
         sendRegalo = false;
+        presentToSteal = 10;
     }
 
     // Update is called once per frame
@@ -25,7 +27,20 @@ public class Rudolf : MonoBehaviour {
         if (Vector2.Distance(transform.position, Arbol.transform.position) == 0)
         {
             sendRegalo = true;
-            GameManager.regalos -= 10;
+            if (Spawn.round == 3)
+            {
+                GameManager.regalos -= presentToSteal;
+            }
+            if (Spawn.round == 6)
+            {
+                presentToSteal = 20;
+                GameManager.regalos -= presentToSteal;
+            }
+            if (Spawn.round == 9)
+            {
+                presentToSteal = 30;
+                GameManager.regalos -= presentToSteal;
+            }
         }
         if (sendRegalo)
         {
