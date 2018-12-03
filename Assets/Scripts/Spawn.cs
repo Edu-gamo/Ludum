@@ -28,7 +28,7 @@ public class Spawn : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(round);
+        //Debug.Log(round);
         //contador del juego 
         enemyS = GameObject.FindGameObjectsWithTag("Enemy");
 
@@ -334,7 +334,7 @@ public class Spawn : MonoBehaviour {
                 }
                 break;
             case 8:
-                if (timeDurationRound < 6000)
+                if (timeDurationRound < 3000)
                 {
                     MovementEnemy.vel = 2f;
                     //Tiempo de spawn de cada enemigo
@@ -364,7 +364,7 @@ public class Spawn : MonoBehaviour {
                 }
                 break;
             case 9:
-                if (timeDurationRound < 6000)
+                if (timeDurationRound < 3000)
                 {
                     MovementEnemy.vel = 2f;
                     //Tiempo de spawn de cada enemigo
@@ -394,7 +394,7 @@ public class Spawn : MonoBehaviour {
                 }
                 break;
             case 10:
-                if (timeDurationRound < 6000)
+                if (timeDurationRound < 3000)
                 {
                     MovementEnemy.vel = 2f;
                     //Tiempo de spawn de cada enemigo

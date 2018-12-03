@@ -4,16 +4,10 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour {
 
-    public static int regalos;
-    public static bool gamePaused;
+    public static int regalos = 30;
+    public static bool gamePaused = false;
 	// Use this for initialization
-	void Start () {
 
-        regalos = 50;
-        gamePaused = false;
-
-    }
-	
 	// Update is called once per frame
 	void Update () {
 		if(regalos == 0)
