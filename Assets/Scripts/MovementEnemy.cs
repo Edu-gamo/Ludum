@@ -42,6 +42,9 @@ public class MovementEnemy : MonoBehaviour {
     public GameObject[] nodesFromNode16;
     public int nudes;
     float shortesNude;
+
+    private SpriteRenderer sprRender;
+    public Vector2 presentOffset = new Vector2(1.15f, 0.2f);
   
     private void Awake() {
         shortesNude = Mathf.Infinity;
@@ -69,6 +72,7 @@ public class MovementEnemy : MonoBehaviour {
         rb = GetComponent<Rigidbody2D>();
         Target = GameObject.Find("Tree").GetComponent<Transform>();
         objectStealed.gameObject.SetActive(false);
+        sprRender = GetComponent<SpriteRenderer>();
     }
 	
 	// Update is called once per frame
@@ -89,18 +93,43 @@ public class MovementEnemy : MonoBehaviour {
             //Velocidad del elfo
             vel = 1f;
             moveNode();
+            EnemyRotation(Target.gameObject.transform.position);
         } else {
             objectStealed.gameObject.SetActive(true);
             transform.position = Vector2.MoveTowards(transform.position, exits[exit].transform.position, 5 * Time.deltaTime);
+            EnemyRotation(exits[exit].transform.position);
         }
 
         //Rotacion hacia el objeto
-        Vector2 direccion = Target.gameObject.transform.position - transform.position;
+        /*Vector2 direccion = Target.gameObject.transform.position - transform.position;
         float angulo = Mathf.Atan2(direccion.y, direccion.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.AngleAxis(angulo, Vector3.forward);
+        transform.rotation = Quaternion.AngleAxis(angulo, Vector3.forward);*/
 
         //Si llega al muro mas cercano despues de robar el regalo, muere
         if (Vector3.Distance(transform.position, exits[exit].transform.position) < 0.5f && stealed) Destroy(gameObject); 
+    }
+
+    private void EnemyRotation(Vector2 target) {
+
+        //Gira el sprite dependiendo de la direccion
+        Vector2 direction = target - new Vector2(transform.position.x, transform.position.y);
+        if (direction.x < 0 && !sprRender.flipX) {
+            sprRender.flipX = true;
+        } else if (direction.x > 0 && sprRender.flipX) {
+            sprRender.flipX = false;
+        }
+
+        //Si ha robado, cambia la posicion del regalo relativa al grinch para encajar en sus manos
+        if (objectStealed.gameObject.activeSelf) {
+
+            if (sprRender.flipX && objectStealed.transform.localPosition.x > 0) {
+                objectStealed.transform.localPosition = new Vector3(-presentOffset.x, presentOffset.y, objectStealed.transform.localPosition.z);
+            } else if(!sprRender.flipX && objectStealed.transform.localPosition.x < 0) {
+                objectStealed.transform.localPosition = new Vector3(presentOffset.x, presentOffset.y, objectStealed.transform.localPosition.z);
+            }
+
+        }
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {

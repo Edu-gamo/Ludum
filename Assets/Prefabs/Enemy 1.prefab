@@ -21,9 +21,10 @@ GameObject:
   - component: {fileID: 4216910768200134}
   - component: {fileID: 212500677534645876}
   - component: {fileID: 50375019514083998}
-  - component: {fileID: 61332512108334524}
   - component: {fileID: 114358877598379322}
-  - component: {fileID: 61454734254226780}
+  - component: {fileID: 70343580415055100}
+  - component: {fileID: 70286874446356418}
+  - component: {fileID: 95371110355810424}
   m_Layer: 9
   m_Name: Enemy 1
   m_TagString: Enemy
@@ -54,8 +55,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1553369354156382}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.09, z: -1}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 1}
+  m_LocalPosition: {x: 1.15, y: 0.2, z: -1}
+  m_LocalScale: {x: 0.65, y: 0.65, z: 1}
   m_Children: []
   m_Father: {fileID: 4216910768200134}
   m_RootOrder: 0
@@ -67,8 +68,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1384402081327784}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12.601667, y: 6.6664796, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 1}
   m_Children:
   - {fileID: 4161654414922412}
   m_Father: {fileID: 0}
@@ -93,9 +94,9 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!61 &61332512108334524
-BoxCollider2D:
+  m_Constraints: 4
+--- !u!70 &70286874446356418
+CapsuleCollider2D:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -106,21 +107,11 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0060836524, y: 0.021460835}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.2, y: 0.2}
-    newSize: {x: 0.2, y: 0.2}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.24992672, y: 0.26695633}
-  m_EdgeRadius: 0
---- !u!61 &61454734254226780
-BoxCollider2D:
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 2.25, y: 3.5}
+  m_Direction: 0
+--- !u!70 &70343580415055100
+CapsuleCollider2D:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -132,18 +123,26 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.2, y: 0.2}
-    newSize: {x: 0.2, y: 0.2}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.2, y: 0.2}
-  m_EdgeRadius: 0
+  m_Size: {x: 2.25, y: 3.5}
+  m_Direction: 0
+--- !u!95 &95371110355810424
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1384402081327784}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 36066e0a3602a5d4e9959fe781dd9878, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &114358877598379322
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -294,6 +293,7 @@ MonoBehaviour:
   - {fileID: 1556916765900394, guid: d04f8bbc8ec9b544eb80665730db52b9, type: 2}
   - {fileID: 1655817104282878, guid: d04f8bbc8ec9b544eb80665730db52b9, type: 2}
   nudes: 0
+  presentOffset: {x: 1.15, y: 0}
 --- !u!212 &212042495247285354
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -375,8 +375,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  m_Color: {r: 0.0036325455, g: 0, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 28cfec8853b4d7443b4141f83a8a02c1, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
