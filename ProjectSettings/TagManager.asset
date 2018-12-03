@@ -10,6 +10,8 @@ TagManager:
   - Wall
   - Bullet
   - regalo
+  - ElfHouse
+  - PausePanel
   layers:
   - Default
   - TransparentFX

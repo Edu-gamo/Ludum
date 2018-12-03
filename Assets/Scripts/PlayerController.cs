@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour {
 
     private float axisX, axisY;
-    private bool interact, shoot;
+    private bool interact, shoot, pause;
     private Vector2 mousePos = Vector2.zero;
 
     public float speed = 10;
@@ -19,11 +19,16 @@ public class PlayerController : MonoBehaviour {
 
     private SpriteRenderer sprRender;
 
+    public GameObject pausePanel;
+
     // Use this for initialization
     void Start () {
 
         rigid = GetComponent<Rigidbody2D>();
         sprRender = GetComponent<SpriteRenderer>();
+
+        pausePanel = GameObject.FindGameObjectWithTag("PausePanel");
+        pausePanel.SetActive(false);
 
     }
 	
@@ -32,16 +37,31 @@ public class PlayerController : MonoBehaviour {
 
         GetInputs();
 
-        PlayerRotation();
+        if (!GameManager.gamePaused) {
 
-        movement = new Vector2(axisX, axisY);
-        movement *= speed * Time.deltaTime;
-        
-        rigid.MovePosition(rigid.position + movement);
+            PlayerRotation();
 
-        if (shoot) {
-            GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
-            bullet.GetComponent<BulletMovement>().movement = new Vector3(mousePos.x - transform.position.x, mousePos.y - transform.position.y, 0).normalized;
+            movement = new Vector2(axisX, axisY);
+            movement *= speed * Time.deltaTime;
+
+            rigid.MovePosition(rigid.position + movement);
+
+            if (shoot)
+            {
+                GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+                bullet.GetComponent<BulletMovement>().movement = new Vector3(mousePos.x - transform.position.x, mousePos.y - transform.position.y, 0).normalized;
+            }
+
+        }
+
+        if (pause) {
+            if(!GameManager.gamePaused) {
+                pausePanel.GetComponentInParent<MainMenuScript>().PauseGame();
+                pausePanel.SetActive(true);
+            } else {
+                pausePanel.GetComponentInParent<MainMenuScript>().ResumeGame();
+                pausePanel.SetActive(false);
+            }
         }
 
     }
@@ -55,6 +75,8 @@ public class PlayerController : MonoBehaviour {
 
         shoot = Input.GetMouseButtonDown(0);
         mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+        pause = Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P);
 
     }
 

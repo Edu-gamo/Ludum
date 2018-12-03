@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class MainMenuScript : MonoBehaviour {
 
 	public void LoadScene(int index) {
+        if (GameManager.gamePaused) ResumeGame();
         SceneManager.LoadScene(index);
     }
 
@@ -15,6 +16,20 @@ public class MainMenuScript : MonoBehaviour {
 #else
         Application.Quit();
 #endif
+    }
+
+    public void PauseGame() {
+
+        Time.timeScale = 0;
+        GameManager.gamePaused = true;
+
+    }
+
+    public void ResumeGame() {
+
+        Time.timeScale = 1;
+        GameManager.gamePaused = false;
+
     }
 
 }
