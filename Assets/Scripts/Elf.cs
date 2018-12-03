@@ -21,10 +21,12 @@ public class Elf : MonoBehaviour {
     public int node;
 
     public float randomMov;
+    
     // Use this for initialization
 
     private void Awake()
     {
+   
         shortestDist = Mathf.Infinity;
         for (int i = 0; i < nodes.Length; i++)
         {
@@ -38,6 +40,7 @@ public class Elf : MonoBehaviour {
         randomMov = Random.Range(200, 500);
     }
     void Start () {
+       
         timeCounter = 0;
        
         Player = GameObject.Find("Player").GetComponent<Transform>();
