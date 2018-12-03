@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class PlayerController : MonoBehaviour {
 
     private float axisX, axisY;
@@ -44,7 +44,10 @@ public class PlayerController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
+        if (Input.GetKey(KeyCode.H))
+        {
+            SceneManager.LoadScene(3);
+        }
         GetInputs();
 
         if (!GameManager.gamePaused) {
