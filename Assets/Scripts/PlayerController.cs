@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour {
 
     public GameObject pausePanel;
 
+    
     // Use this for initialization
     void Start () {
 
@@ -56,6 +57,7 @@ public class PlayerController : MonoBehaviour {
 
             if (shoot)
             {
+                
                 GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
                 bullet.GetComponent<BulletMovement>().movement = new Vector3(mousePos.x - transform.position.x, mousePos.y - transform.position.y, 0).normalized;
             }

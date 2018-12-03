@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuScript : MonoBehaviour {
 
+
 	public void LoadScene(int index) {
         if (GameManager.gamePaused) ResumeGame();
         SceneManager.LoadScene(index);
