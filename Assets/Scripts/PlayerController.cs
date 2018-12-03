@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour {
     private Vector2 movement = Vector2.zero;
 
     private Rigidbody2D rigid;
+    private Animator anim;
 
     public static int ammo;
 
@@ -26,6 +27,7 @@ public class PlayerController : MonoBehaviour {
 
         rigid = GetComponent<Rigidbody2D>();
         sprRender = GetComponent<SpriteRenderer>();
+        anim = GetComponent<Animator>();
 
         pausePanel = GameObject.FindGameObjectWithTag("PausePanel");
         pausePanel.SetActive(false);
@@ -43,6 +45,12 @@ public class PlayerController : MonoBehaviour {
 
             movement = new Vector2(axisX, axisY);
             movement *= speed * Time.deltaTime;
+
+            if(movement.magnitude > 0.0f) {
+                anim.SetBool(anim.GetParameter(0).name, true);
+            } else {
+                anim.SetBool(anim.GetParameter(0).name, false);
+            }
 
             rigid.MovePosition(rigid.position + movement);
 
