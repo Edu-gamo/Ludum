@@ -11,7 +11,7 @@ public class ElfHouseManager : MonoBehaviour {
     private float workCounter = 0;
     public float maxWorkTime = 30;
     public float minWorkTime = 10;
-    public int presentIncrement = 1;
+    public int presentIncrement = 2;
 
     private Text elfsText;
 
@@ -25,11 +25,20 @@ public class ElfHouseManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+        workCounter += Time.deltaTime;
+
         if (elfsWorking > 0) {
 
-            workCounter += Time.deltaTime;
-
             if (workCounter >= maxWorkTime) {
+
+                workCounter = 0;
+                GameManager.regalos += presentIncrement;
+
+            }
+
+        } else {
+
+            if (workCounter >= 60) {
 
                 workCounter = 0;
                 GameManager.regalos += presentIncrement;

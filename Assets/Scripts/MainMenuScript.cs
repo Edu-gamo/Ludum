@@ -7,23 +7,29 @@ public class MainMenuScript : MonoBehaviour {
 
     public GameObject mute;
     public GameObject unmute;
+
 	public void LoadScene(int index) {
         if (GameManager.gamePaused) ResumeGame();
         SceneManager.LoadScene(index);
     }
-    private void Start()
-    {
+
+    private void Start() {
         if (GameObject.Find("MuteButton") != null)
         {
             unmute.gameObject.SetActive(false);
         }
     }
+
     public void ExitGame() {
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #else
         Application.Quit();
 #endif
+    }
+
+    public void ResetPresents() {
+        GameManager.regalos = 30;
     }
 
     public void PauseGame() {

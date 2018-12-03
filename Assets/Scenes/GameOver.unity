@@ -647,6 +647,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textRound: {fileID: 159165614}
+  textResult: {fileID: 885199853}
+  santa: {fileID: 1697280166}
+  santa2: {fileID: 0}
 --- !u!1 &885199851
 GameObject:
   m_ObjectHideFlags: 0
