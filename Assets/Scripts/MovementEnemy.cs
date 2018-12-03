@@ -153,7 +153,7 @@ public class MovementEnemy : MonoBehaviour {
                 {
                     if (Vector2.Distance(transform.position, nodesFromNode1[way].transform.position) > 0)
                     {
-                        transform.position = Vector2.MoveTowards(transform.position, nodesFromNode1[way].transform.position, 3 * Time.deltaTime);
+                        transform.position = Vector2.MoveTowards(transform.position, nodesFromNode1[way].transform.position, vel * Time.deltaTime);
                     }
                 }
                 if (Vector2.Distance(transform.position, nodesFromNode1[way].transform.position) == 0)
@@ -166,7 +166,7 @@ public class MovementEnemy : MonoBehaviour {
                 {
                     if (Vector2.Distance(transform.position, nodesFromNode2[way].transform.position) > 0)
                     {
-                        transform.position = Vector2.MoveTowards(transform.position, nodesFromNode2[way].transform.position, 3 * Time.deltaTime);
+                        transform.position = Vector2.MoveTowards(transform.position, nodesFromNode2[way].transform.position, vel * Time.deltaTime);
                     }
                 }
                 if (Vector2.Distance(transform.position, nodesFromNode2[way].transform.position) == 0)
