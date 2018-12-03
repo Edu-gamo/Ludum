@@ -22,7 +22,10 @@ public class PlayerController : MonoBehaviour {
 
     public GameObject pausePanel;
 
-    
+    private bool nearElfHouse = false;
+    private GameObject elfHouse;
+
+
     // Use this for initialization
     void Start () {
 
@@ -32,6 +35,8 @@ public class PlayerController : MonoBehaviour {
 
         pausePanel = GameObject.FindGameObjectWithTag("PausePanel");
         pausePanel.SetActive(false);
+
+        elfHouse = GameObject.FindGameObjectWithTag("ElfHouse");
 
     }
 	
@@ -60,6 +65,12 @@ public class PlayerController : MonoBehaviour {
                 ammo--;
                 GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
                 bullet.GetComponent<BulletMovement>().movement = new Vector3(mousePos.x - transform.position.x, mousePos.y - transform.position.y, 0).normalized;
+            }
+
+            if (nearElfHouse && interact && ammo > 0) {
+
+                if (elfHouse.GetComponent<ElfHouseManager>().AddElf()) ammo--;
+
             }
 
         }
@@ -106,9 +117,17 @@ public class PlayerController : MonoBehaviour {
 
     }
 
+    private void OnTriggerEnter2D(Collider2D collision) {
+        if (collision.tag == "ElfHouse") nearElfHouse = true;
+    }
+
+    private void OnTriggerExit2D(Collider2D collision) {
+        if (collision.tag == "ElfHouse") nearElfHouse = false;
+    }
+
     private void OnTriggerStay2D(Collider2D collision) {
-        
-        if(collision.tag == "Elf") {
+
+        if (collision.tag == "Elf") {
 
             if (interact) {
                 
@@ -117,15 +136,17 @@ public class PlayerController : MonoBehaviour {
 
             }
 
-        } else if (collision.tag == "ElfHouse") {
+        }
 
+        /*if (collision.tag == "ElfHouse") {
+            
             if (interact && ammo > 0) {
 
                 if(collision.GetComponent<ElfHouseManager>().AddElf()) ammo--;
 
             }
 
-        }
+        }*/
         
     }
 
