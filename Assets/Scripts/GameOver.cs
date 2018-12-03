@@ -22,6 +22,7 @@ public class GameOver : MonoBehaviour {
     }
     public void playAgain()
     {
+        GameManager.regalos = 30;
         SceneManager.LoadScene(2);
 
     }
