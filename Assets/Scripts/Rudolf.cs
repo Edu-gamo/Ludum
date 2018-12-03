@@ -36,7 +36,9 @@ public class Rudolf : MonoBehaviour {
                 presentToSteal = 20;
                 GameManager.regalos -= presentToSteal;
             }
-            if (Spawn.round == 9)
+            if (Spawn.round == 9 || Spawn.round == 12 || Spawn.round == 12
+                || Spawn.round == 15 || Spawn.round == 18 || Spawn.round == 21
+                || Spawn.round == 24 || Spawn.round == 27 || Spawn.round == 30)
             {
                 presentToSteal = 30;
                 GameManager.regalos -= presentToSteal;

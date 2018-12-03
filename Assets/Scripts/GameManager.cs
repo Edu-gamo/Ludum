@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour {
 
     public static int regalos = 30;
@@ -10,9 +10,9 @@ public class GameManager : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		if(regalos == 0)
+		if(regalos <= 0)
         {
-            //game over
+            SceneManager.LoadScene(3);
         }
 	}
 }
