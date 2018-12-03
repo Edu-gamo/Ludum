@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour {
     private Rigidbody2D rigid;
     private Animator anim;
 
-    public static int ammo;
+    public static int ammo = 20;
 
     public GameObject bulletPrefab;
 
@@ -55,9 +55,9 @@ public class PlayerController : MonoBehaviour {
 
             rigid.MovePosition(rigid.position + movement);
 
-            if (shoot)
+            if (shoot && ammo > 0)
             {
-                
+                ammo--;
                 GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
                 bullet.GetComponent<BulletMovement>().movement = new Vector3(mousePos.x - transform.position.x, mousePos.y - transform.position.y, 0).normalized;
             }
