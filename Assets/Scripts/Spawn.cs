@@ -28,7 +28,7 @@ public class Spawn : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(round);
+        //Debug.Log(round);
         //contador del juego 
         enemyS = GameObject.FindGameObjectsWithTag("Enemy");
 

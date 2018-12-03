@@ -21,7 +21,9 @@ public class Elf : MonoBehaviour {
     public int node;
 
     public float randomMov;
-    
+
+    private Animator anim;
+
     // Use this for initialization
 
     private void Awake()
@@ -47,6 +49,7 @@ public class Elf : MonoBehaviour {
         //Debug.Log("Nodo 0 " + Vector2.Distance(transform.position, nodes[0].transform.position));
         //Debug.Log("Nodo 1 " + Vector2.Distance(transform.position, nodes[1].transform.position));
 
+        anim = GetComponent<Animator>();
 
     }
 
@@ -66,7 +69,7 @@ public class Elf : MonoBehaviour {
                 {
                     i++;
                     timeCounter = 0;
-                    if(i == 4)
+                    if (i == 4)
                     {
                         i = 0;
                     }
@@ -229,7 +232,13 @@ public class Elf : MonoBehaviour {
                 }
                 break;
         }
-    
+
+        if(timeCounter == 0) {
+            anim.SetBool(anim.GetParameter(0).name, true);
+        } else {
+            anim.SetBool(anim.GetParameter(0).name, false);
+        }
+
     }
     
  
