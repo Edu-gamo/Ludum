@@ -41,8 +41,8 @@ public class Elf : MonoBehaviour {
         timeCounter = 0;
        
         Player = GameObject.Find("Player").GetComponent<Transform>();
-        Debug.Log("Nodo 0 " + Vector2.Distance(transform.position, nodes[0].transform.position));
-        Debug.Log("Nodo 1 " + Vector2.Distance(transform.position, nodes[1].transform.position));
+        //Debug.Log("Nodo 0 " + Vector2.Distance(transform.position, nodes[0].transform.position));
+        //Debug.Log("Nodo 1 " + Vector2.Distance(transform.position, nodes[1].transform.position));
 
 
     }
