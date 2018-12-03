@@ -13,7 +13,10 @@ public class MainMenuScript : MonoBehaviour {
     }
     private void Start()
     {
-        unmute.gameObject.SetActive(false);
+        if (GameObject.Find("MuteButton") != null)
+        {
+            unmute.gameObject.SetActive(false);
+        }
     }
     public void ExitGame() {
 #if UNITY_EDITOR
@@ -41,14 +44,20 @@ public class MainMenuScript : MonoBehaviour {
   
         AudioListener.pause = true;
         AudioListener.volume = 0;
-        unmute.gameObject.SetActive(true);
-        mute.gameObject.SetActive(false);
+        if (GameObject.Find("MuteButton") != null || GameObject.Find("UnmuteButton") != null)
+        {
+            unmute.gameObject.SetActive(true);
+            mute.gameObject.SetActive(false);
+        }
     }
     public void unmuteSound()
     {
         AudioListener.pause = false;
         AudioListener.volume = 1;
-        unmute.gameObject.SetActive(false);
-        mute.gameObject.SetActive(true);
+        if (GameObject.Find("MuteButton") != null || GameObject.Find("UnmuteButton") != null)
+        {
+            unmute.gameObject.SetActive(false);
+            mute.gameObject.SetActive(true);
+        }
     }
 }

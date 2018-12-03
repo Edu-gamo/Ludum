@@ -12,6 +12,7 @@ TagManager:
   - regalo
   - ElfHouse
   - PausePanel
+  - Obstacles
   layers:
   - Default
   - TransparentFX
@@ -25,7 +26,7 @@ TagManager:
   - Enemy
   - Wall
   - Elf
-  - 
+  - Fondo
   - 
   - 
   - 

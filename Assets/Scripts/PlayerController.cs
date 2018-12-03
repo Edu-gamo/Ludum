@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour {
     private Rigidbody2D rigid;
     private Animator anim;
 
-    public static int ammo = 20;
+    public static int ammo;
 
     public GameObject bulletPrefab;
 
@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-
+        ammo = 20;
         rigid = GetComponent<Rigidbody2D>();
         sprRender = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
