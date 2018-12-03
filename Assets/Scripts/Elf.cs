@@ -9,6 +9,11 @@ public class Elf : MonoBehaviour {
     public GameObject[] nodes;
     public GameObject[] nodesFromNode1;
     public GameObject[] nodesFromNode2;
+    public GameObject[] nodesFromNode3;
+    public GameObject[] nodesFromNode4;
+    public GameObject[] nodesFromNode5;
+    public GameObject[] nodesFromNode6;
+    public GameObject[] nodesFromNode7;
     int i = 0;
     int lastI = 0;
     float shortestDist;
@@ -45,7 +50,6 @@ public class Elf : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-       
         switch (node) { 
             case 0:
             if (Vector2.Distance(transform.position, nodes[node].transform.position) >= 0)
@@ -80,6 +84,131 @@ public class Elf : MonoBehaviour {
                     }
                 }
                 if (Vector2.Distance(transform.position, nodesFromNode2[i].transform.position) == 0)
+                {
+                    if (timeCounter > 200)
+                    {
+                        i++;
+                        timeCounter = 0;
+                    }
+                    else
+                    {
+                        timeCounter++;
+                    }
+                    if (i == 4)
+                    {
+                        i = 0;
+                    }
+                }
+                break;
+            case 2:
+                if (Vector2.Distance(transform.position, nodes[node].transform.position) >= 0)
+                {
+                    if (Vector2.Distance(transform.position, nodesFromNode3[i].transform.position) > 0)
+                    {
+                        transform.position = Vector2.MoveTowards(transform.position, nodesFromNode3[i].transform.position, 3 * Time.deltaTime);
+                    }
+                }
+                if (Vector2.Distance(transform.position, nodesFromNode3[i].transform.position) == 0)
+                {
+                    if (timeCounter > 200)
+                    {
+                        i++;
+                        timeCounter = 0;
+                    }
+                    else
+                    {
+                        timeCounter++;
+                    }
+                    if (i == 4)
+                    {
+                        i = 0;
+                    }
+                }
+                break;
+            case 3:
+                if (Vector2.Distance(transform.position, nodes[node].transform.position) >= 0)
+                {
+                    if (Vector2.Distance(transform.position, nodesFromNode4[i].transform.position) > 0)
+                    {
+                        transform.position = Vector2.MoveTowards(transform.position, nodesFromNode4[i].transform.position, 3 * Time.deltaTime);
+                    }
+                }
+                if (Vector2.Distance(transform.position, nodesFromNode4[i].transform.position) == 0)
+                {
+                    if (timeCounter > 200)
+                    {
+                        i++;
+                        timeCounter = 0;
+                    }
+                    else
+                    {
+                        timeCounter++;
+                    }
+                    if (i == 4)
+                    {
+                        i = 0;
+                    }
+                }
+                break;
+            case 4:
+                if (Vector2.Distance(transform.position, nodes[node].transform.position) >= 0)
+                {
+                    if (Vector2.Distance(transform.position, nodesFromNode5[i].transform.position) > 0)
+                    {
+                        transform.position = Vector2.MoveTowards(transform.position, nodesFromNode5[i].transform.position, 3 * Time.deltaTime);
+                    }
+                }
+                if (Vector2.Distance(transform.position, nodesFromNode5[i].transform.position) == 0)
+                {
+                    if (timeCounter > 200)
+                    {
+                        i++;
+                        timeCounter = 0;
+                    }
+                    else
+                    {
+                        timeCounter++;
+                    }
+                    if (i == 4)
+                    {
+                        i = 0;
+                    }
+                }
+                break;
+            case 5:
+                if (Vector2.Distance(transform.position, nodes[node].transform.position) >= 0)
+                {
+                    if (Vector2.Distance(transform.position, nodesFromNode6[i].transform.position) > 0)
+                    {
+                        transform.position = Vector2.MoveTowards(transform.position, nodesFromNode6[i].transform.position, 3 * Time.deltaTime);
+                    }
+                }
+                if (Vector2.Distance(transform.position, nodesFromNode6[i].transform.position) == 0)
+                {
+                    if (timeCounter > 200)
+                    {
+                        i++;
+                        timeCounter = 0;
+                    }
+                    else
+                    {
+                        timeCounter++;
+                    }
+                    if (i == 4)
+                    {
+                        i = 0;
+                    }
+                }
+                break;
+            case 6:
+                if (Vector2.Distance(transform.position, nodes[node].transform.position) >= 0)
+                {
+                    if (Vector2.Distance(transform.position, nodesFromNode7[i].transform.position) > 0)
+                    {
+                        transform.position = Vector2.MoveTowards(transform.position, nodesFromNode7[i].transform.position, 3 * Time.deltaTime);
+                    }
+                }
+                if (Vector2.Distance(transform.position, nodesFromNode7[i].transform.position) == 0)
                 {
                     if (timeCounter > 200)
                     {
