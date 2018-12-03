@@ -24,7 +24,7 @@ public class BulletMovement : MonoBehaviour {
     private void OnTriggerEnter2D(Collider2D collision) {
 
         if(collision.tag == "Enemy") {
-            MovementEnemy.explodeSound.Play();
+          
             collision.GetComponent<MovementEnemy>().hp--;
         }
 

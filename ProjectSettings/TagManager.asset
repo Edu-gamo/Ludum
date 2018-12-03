@@ -13,6 +13,7 @@ TagManager:
   - ElfHouse
   - PausePanel
   - Obstacles
+  - Reno
   layers:
   - Default
   - TransparentFX

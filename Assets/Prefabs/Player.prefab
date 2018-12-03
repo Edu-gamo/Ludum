@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 70916162084702022}
   - component: {fileID: 114433671134503694}
   - component: {fileID: 95335686331864782}
-  - component: {fileID: 82884200833067744}
+  - component: {fileID: 82530020434010090}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -80,7 +80,7 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 2.75, y: 4.02}
   m_Direction: 0
---- !u!82 &82884200833067744
+--- !u!82 &82530020434010090
 AudioSource:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -89,7 +89,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 707c96243a751e342bdcbeac1fc133a3, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 2ce7b070de6c6214387566af767aa40c, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -204,11 +204,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c21a610aae8a514428852e9cfe037c3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 6
   bulletPrefab: {fileID: 1936062985180546, guid: 5f94fc54b4307f548a89c4bc5251806c,
     type: 2}
   pausePanel: {fileID: 0}
-  shotAudio: {fileID: 82884200833067744}
+  shotSong: {fileID: 82530020434010090}
 --- !u!212 &212468649274098774
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -243,7 +243,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_Sprite: {fileID: 21300000, guid: d66e534b63d94b645b1f6f5da100f4c1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

@@ -24,10 +24,12 @@ public class PlayerController : MonoBehaviour {
 
     private bool nearElfHouse = false;
     private GameObject elfHouse;
-
+    public AudioSource shotSong;
 
     // Use this for initialization
+   
     void Start () {
+        shotSong.Stop();
         ammo = 20;
         rigid = GetComponent<Rigidbody2D>();
         sprRender = GetComponent<SpriteRenderer>();
@@ -62,6 +64,7 @@ public class PlayerController : MonoBehaviour {
 
             if (shoot && ammo > 0)
             {
+                shotSong.Play();
                 ammo--;
                 GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
                 bullet.GetComponent<BulletMovement>().movement = new Vector3(mousePos.x - transform.position.x, mousePos.y - transform.position.y, 0).normalized;
@@ -129,13 +132,8 @@ public class PlayerController : MonoBehaviour {
 
         if (collision.tag == "Elf") {
 
-            if (interact) {
-                
                 ammo++;
                 Destroy(collision.gameObject);
-
-            }
-
         }
 
         /*if (collision.tag == "ElfHouse") {

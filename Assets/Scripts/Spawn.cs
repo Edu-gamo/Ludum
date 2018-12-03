@@ -8,7 +8,7 @@ public class Spawn : MonoBehaviour {
     public GameObject[] enemy; //enemigo spawneado!!
     public GameObject[] elfs;
     public GameObject elf;
-    int round;
+    public static int round;
     public int randSpawnPlatform;  //Spawn en una de las plataformas
     public int randSpawnPosition; //Posiciones random de spawn
     float counter; //contador
@@ -25,9 +25,11 @@ public class Spawn : MonoBehaviour {
 
     public float timeRound;
     public bool endRound = false;
+    public GameObject textRound;
     // Update is called once per frame
     private void Start()
     {
+        textRound.gameObject.SetActive(false);
         timeRound = 0;
         round = 0;
     }
@@ -99,6 +101,14 @@ public class Spawn : MonoBehaviour {
             case 0:
             if (timeDurationRound < 2000)
             {
+                    if(timeDurationRound < 500)
+                    {
+                        textRound.gameObject.SetActive(true);
+                    }
+                   if(timeDurationRound > 500)
+                    {
+                        textRound.gameObject.SetActive(false);
+                    }
             //velocidad enemigos de esa oleada
             MovementEnemy.vel = 1f;
             //Tiempo de spawn de cada enemigo
@@ -130,8 +140,16 @@ public class Spawn : MonoBehaviour {
             //TIEMPO DURACION OLEADA 2 
             case 1:
                 if (timeDurationRound < 2000)
-        {
-            MovementEnemy.vel = 2f;
+                {
+                    if (timeDurationRound < 200)
+                    {
+                        textRound.gameObject.SetActive(true);
+                    }
+                    if (timeDurationRound > 200)
+                    {
+                        textRound.gameObject.SetActive(false);
+                    }
+                    MovementEnemy.vel = 2f;
             //Tiempo de spawn de cada enemigo
             if (counter > 145)
             {
@@ -161,6 +179,14 @@ public class Spawn : MonoBehaviour {
             case 2:
                 if (timeDurationRound < 2000)
                 {
+                    if (timeDurationRound < 200)
+                    {
+                        textRound.gameObject.SetActive(true);
+                    }
+                    if (timeDurationRound > 200)
+                    {
+                        textRound.gameObject.SetActive(false);
+                    }
                     MovementEnemy.vel = 2f;
                     //Tiempo de spawn de cada enemigo
                     if (counter > 135)
@@ -191,6 +217,14 @@ public class Spawn : MonoBehaviour {
             case 3:
                 if (timeDurationRound < 2000)
                 {
+                    if (timeDurationRound < 200)
+                    {
+                        textRound.gameObject.SetActive(true);
+                    }
+                    if (timeDurationRound > 200)
+                    {
+                        textRound.gameObject.SetActive(false);
+                    }
                     MovementEnemy.vel = 2f;
                     //Tiempo de spawn de cada enemigo
                     if (counter > 120)
@@ -221,6 +255,14 @@ public class Spawn : MonoBehaviour {
             case 4:
                 if (timeDurationRound < 2000)
                 {
+                    if (timeDurationRound < 200)
+                    {
+                        textRound.gameObject.SetActive(true);
+                    }
+                    if (timeDurationRound > 200)
+                    {
+                        textRound.gameObject.SetActive(false);
+                    }
                     MovementEnemy.vel = 2f;
                     //Tiempo de spawn de cada enemigo
                     if (counter > 110)
@@ -251,6 +293,14 @@ public class Spawn : MonoBehaviour {
             case 5:
                 if (timeDurationRound < 2000)
                 {
+                    if (timeDurationRound < 200)
+                    {
+                        textRound.gameObject.SetActive(true);
+                    }
+                    if (timeDurationRound > 200)
+                    {
+                        textRound.gameObject.SetActive(false);
+                    }
                     MovementEnemy.vel = 2f;
                     //Tiempo de spawn de cada enemigo
                     if (counter > 105)
@@ -281,6 +331,14 @@ public class Spawn : MonoBehaviour {
             case 6:
                 if (timeDurationRound < 2000)
                 {
+                    if (timeDurationRound < 200)
+                    {
+                        textRound.gameObject.SetActive(true);
+                    }
+                    if (timeDurationRound > 200)
+                    {
+                        textRound.gameObject.SetActive(false);
+                    }
                     MovementEnemy.vel = 2f;
                     //Tiempo de spawn de cada enemigo
                     if (counter > 95)
@@ -311,6 +369,14 @@ public class Spawn : MonoBehaviour {
             case 7:
                 if (timeDurationRound < 2000)
                 {
+                    if (timeDurationRound < 200)
+                    {
+                        textRound.gameObject.SetActive(true);
+                    }
+                    if (timeDurationRound > 200)
+                    {
+                        textRound.gameObject.SetActive(false);
+                    }
                     MovementEnemy.vel = 2f;
                     //Tiempo de spawn de cada enemigo
                     if (counter > 90)
@@ -341,6 +407,14 @@ public class Spawn : MonoBehaviour {
             case 8:
                 if (timeDurationRound < 2250)
                 {
+                    if (timeDurationRound < 200)
+                    {
+                        textRound.gameObject.SetActive(true);
+                    }
+                    if (timeDurationRound > 200)
+                    {
+                        textRound.gameObject.SetActive(false);
+                    }
                     MovementEnemy.vel = 2f;
                     //Tiempo de spawn de cada enemigo
                     if (counter > 90)
@@ -371,6 +445,14 @@ public class Spawn : MonoBehaviour {
             case 9:
                 if (timeDurationRound < 2500)
                 {
+                    if (timeDurationRound < 200)
+                    {
+                        textRound.gameObject.SetActive(true);
+                    }
+                    if (timeDurationRound > 200)
+                    {
+                        textRound.gameObject.SetActive(false);
+                    }
                     MovementEnemy.vel = 2f;
                     //Tiempo de spawn de cada enemigo
                     if (counter > 85)
@@ -401,6 +483,14 @@ public class Spawn : MonoBehaviour {
             case 10:
                 if (timeDurationRound < 3000)
                 {
+                    if (timeDurationRound < 200)
+                    {
+                        textRound.gameObject.SetActive(true);
+                    }
+                    if (timeDurationRound > 200)
+                    {
+                        textRound.gameObject.SetActive(false);
+                    }
                     MovementEnemy.vel = 2f;
                     //Tiempo de spawn de cada enemigo
                     if (counter > 85)
