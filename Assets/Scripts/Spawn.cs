@@ -8,11 +8,11 @@ public class Spawn : MonoBehaviour {
     public GameObject[] enemy; //enemigo spawneado!!
     public GameObject[] elfs;
     public GameObject elf;
-
+    int round = 0;
     public int randSpawnPlatform;  //Spawn en una de las plataformas
     public int randSpawnPosition; //Posiciones random de spawn
     float counter; //contador
-    float timeSpawn; //tiempo de spawn de cada enemigo 
+   public float timeSpawn; //tiempo de spawn de cada enemigo 
 
     float counterElf;
     float timeSpawnElf;
@@ -20,11 +20,37 @@ public class Spawn : MonoBehaviour {
     public int randElfY;
 
     public int timeForSpawn;
+    public float timeDurationRound;
+    public GameObject[] enemyS;
+
+    public float timeRound = 0;
+    public bool endRound = false;
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(round);
         //contador del juego 
-        timeForSpawn++;
+        enemyS = GameObject.FindGameObjectsWithTag("Enemy");
+
+        if(enemyS.Length == 0)
+        {
+            if (timeSpawn == 1000) //DURACION DESCANSO
+            {
+                round += 1;
+                timeDurationRound = 0;
+            }
+            else
+            {
+                timeSpawn++;
+            }
+        }
+        else
+        {
+            timeSpawn = 0;
+            timeDurationRound++;
+        }
+      
+    
         //Elfos en la escena
         elfs = GameObject.FindGameObjectsWithTag("Elf");
 
@@ -56,8 +82,10 @@ public class Spawn : MonoBehaviour {
     void oleadaSpawnEnemigos()
     {
         //OLEADA 1 -  //TIEMPO DURACION OLEADA 1
-        if (timeForSpawn < 2000 && timeForSpawn > 0)
-        {
+        switch (round) {
+            case 0:
+            if (timeDurationRound < 500)
+            {
             //velocidad enemigos de esa oleada
             MovementEnemy.vel = 1f;
             //Tiempo de spawn de cada enemigo
@@ -82,12 +110,13 @@ public class Spawn : MonoBehaviour {
             else
             {
                 counter++;
-
             }
-        }
-        //OLEADA 2
-        //TIEMPO DURACION OLEADA 2 - EL DESCANSO QUE HAY ENTRE OLEADA
-        if (timeForSpawn < 6000 && timeForSpawn > 4000)
+                }
+                //OLEADA 2
+                break;
+            //TIEMPO DURACION OLEADA 2 
+            case 1:
+                if (timeDurationRound < 1500)
         {
             MovementEnemy.vel = 2f;
             //Tiempo de spawn de cada enemigo
@@ -114,9 +143,12 @@ public class Spawn : MonoBehaviour {
                 counter++;
 
             }
-        }
-        //TIEMPO DURACION OLEADA 3 - EL DESCANSO QUE HAY ENTRE OLEADA
-        if (timeForSpawn < 8000 && timeForSpawn > 6000)
+                }
+           
+                break;
+            //TIEMPO DURACION OLEADA 3 
+            case 2:
+                if (timeDurationRound < 2500)
         {
             MovementEnemy.vel = 3f;
             //Tiempo de spawn de cada enemigo
@@ -143,9 +175,12 @@ public class Spawn : MonoBehaviour {
                 counter++;
 
             }
-        }
-        //TIEMPO DURACION OLEADA 4 - 10000-8000
-        if (timeForSpawn < 10000 && timeForSpawn > 8000)
+                }
+            
+                break;
+            //TIEMPO DURACION OLEADA 4
+            case 3:
+                if (timeDurationRound < 3500)
         {
             MovementEnemy.vel = 4f;
             //Tiempo de spawn de cada enemigo
@@ -172,8 +207,11 @@ public class Spawn : MonoBehaviour {
                 counter++;
 
             }
-        }
-        if (timeForSpawn < 14000 && timeForSpawn > 11000)
+                }
+            
+                break;
+            case 4:
+                if (timeDurationRound < 4500)
         {
             MovementEnemy.vel = 6f;
             //Tiempo de spawn de cada enemigo
@@ -200,8 +238,9 @@ public class Spawn : MonoBehaviour {
                 counter++;
 
             }
+                }
+                break;
+                       
         }
-        //maximo elfos permitidos             
-
     }
 }
