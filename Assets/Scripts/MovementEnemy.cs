@@ -21,6 +21,8 @@ public class MovementEnemy : MonoBehaviour {
     public GameObject objectStealed;
     public GameObject objectToInst;
 
+    private bool isDeath = false;
+
     int way = 0;
     public GameObject[] nodes;
     public GameObject[] nodesFromNode1;
@@ -80,37 +82,44 @@ public class MovementEnemy : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        if (hp <= 0) {
-       
-            Instantiate(explosion, transform.position, Quaternion.identity);
-            if (stealed)
-            {
-                Instantiate(objectToInst, transform.position, Quaternion.identity);
-            }
-            explodeSound.Play();
+        if (isDeath) {
+
             Destroy(gameObject);
-        }
 
-        //If es oleada 1..
-        //La velocidad de la oleada 
-        if (!stealed) {
-            //Velocidad del elfo
-            vel = 1f;
-            moveNode();
-            EnemyRotation(Target.gameObject.transform.position);
         } else {
-            objectStealed.gameObject.SetActive(true);
-            transform.position = Vector2.MoveTowards(transform.position, exits[exit].transform.position, 5 * Time.deltaTime);
-            EnemyRotation(exits[exit].transform.position);
+
+            if (hp <= 0) {
+
+                Instantiate(explosion, transform.position, Quaternion.identity);
+                if (stealed) Instantiate(objectToInst, transform.position, Quaternion.identity);
+                explodeSound.Play();
+                isDeath = true;
+                //Destroy(gameObject);
+            }
+
+            //If es oleada 1..
+            //La velocidad de la oleada 
+            if (!stealed) {
+                //Velocidad del elfo
+                vel = 1f;
+                moveNode();
+                EnemyRotation(Target.gameObject.transform.position);
+            } else {
+                objectStealed.gameObject.SetActive(true);
+                transform.position = Vector2.MoveTowards(transform.position, exits[exit].transform.position, 5 * Time.deltaTime);
+                EnemyRotation(exits[exit].transform.position);
+            }
+
+            //Rotacion hacia el objeto
+            /*Vector2 direccion = Target.gameObject.transform.position - transform.position;
+            float angulo = Mathf.Atan2(direccion.y, direccion.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.AngleAxis(angulo, Vector3.forward);*/
+
+            //Si llega al muro mas cercano despues de robar el regalo, muere
+            if (Vector3.Distance(transform.position, exits[exit].transform.position) < 0.5f && stealed) Destroy(gameObject);
+
         }
-
-        //Rotacion hacia el objeto
-        /*Vector2 direccion = Target.gameObject.transform.position - transform.position;
-        float angulo = Mathf.Atan2(direccion.y, direccion.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.AngleAxis(angulo, Vector3.forward);*/
-
-        //Si llega al muro mas cercano despues de robar el regalo, muere
-        if (Vector3.Distance(transform.position, exits[exit].transform.position) < 0.5f && stealed) Destroy(gameObject); 
+         
     }
 
     private void EnemyRotation(Vector2 target) {

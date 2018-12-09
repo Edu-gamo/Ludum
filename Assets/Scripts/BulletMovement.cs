@@ -28,7 +28,7 @@ public class BulletMovement : MonoBehaviour {
             collision.GetComponent<MovementEnemy>().hp--;
         }
 
-        if (collision.tag != "Player" && collision.tag != "Elf") {
+        if (collision.tag != "Player" && collision.tag != "Elf" && collision.tag != "regalo") {
             Instantiate(explosion, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
